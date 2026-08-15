@@ -1,0 +1,26 @@
+#!/bin/sh
+set -eu
+
+# Reruns automatically whenever either package list changes.
+# pacman.txt hash: {{ include "packages/pacman.txt" | sha256sum }}
+# aur.txt hash: {{ include "packages/aur.txt" | sha256sum }}
+
+SRC="{{ .chezmoi.sourceDir }}"
+
+echo "==> Installing pacman packages"
+sudo pacman -S --needed --noconfirm - < "$SRC/packages/pacman.txt"
+
+if ! command -v yay >/dev/null 2>&1; then
+  echo "==> Installing yay (AUR helper)"
+  git clone https://aur.archlinux.org/yay.git /tmp/yay-install
+  (cd /tmp/yay-install && makepkg -si --noconfirm)
+  rm -rf /tmp/yay-install
+fi
+
+echo "==> Installing AUR packages"
+yay -S --needed --noconfirm - < "$SRC/packages/aur.txt"
+
+if [ "$(getent passwd "$USER" | cut -d: -f7)" != "/usr/bin/fish" ]; then
+  echo "==> Setting fish as login shell (takes effect on next login)"
+  chsh -s /usr/bin/fish
+fi

@@ -6,26 +6,25 @@ caches, credentials, or generated state.
 
 ## Fresh machine bootstrap
 
+One line, on a bare Arch install:
+
 ```sh
-# 1. base system + this repo
-sudo pacman -S --needed git chezmoi
-chezmoi init --apply git@github.com:4yourztruly/dotfiles.git
-
-# 2. packages
-sudo pacman -S --needed - < ~/.local/share/chezmoi/packages/pacman.txt
-
-# 3. AUR packages (needs an AUR helper; installs yay first if missing)
-pacman -Qi yay &>/dev/null || {
-  git clone https://aur.archlinux.org/yay.git /tmp/yay
-  (cd /tmp/yay && makepkg -si --noconfirm)
-}
-yay -S --needed - < ~/.local/share/chezmoi/packages/aur.txt
-
-# 4. set fish as your login shell (chezmoi apply already dropped its config)
-chsh -s /usr/bin/fish
+sudo pacman -S --needed --noconfirm git curl && sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply 4yourztruly
 ```
 
-That's it — `chezmoi apply` already symlinked everything into place in step 1.
+This installs chezmoi, clones this repo, symlinks every tracked config into
+place, then automatically runs `.chezmoiscripts/run_onchange_before_install-packages.sh.tmpl`,
+which:
+
+1. installs everything in `packages/pacman.txt`
+2. installs `yay` if it's missing, then everything in `packages/aur.txt`
+3. sets `fish` as your login shell
+
+That script re-runs on any future `chezmoi apply` if either package list
+changes, so adding a package to `packages/pacman.txt` and pushing is enough —
+no separate install step needed on machines that already have the repo.
+
+Log out/in once afterwards to pick up the fish shell change.
 
 ## What's tracked
 
