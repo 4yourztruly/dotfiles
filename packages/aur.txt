@@ -1,0 +1,13 @@
+auto-cpufreq
+cursor-bin
+figma-linux-bin
+flameshot-git
+gitkraken
+grimblast-git
+hyprlang2lua
+neofetch-git
+spotify
+windscribe-v2-bin
+wlogout
+yay
+yay-debug

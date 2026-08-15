@@ -1,0 +1,89 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 20,
+
+   "modules-left": ["hyprland/workspaces"],
+"modules-center": [
+    "clock"
+    
+    
+],
+"modules-right": [
+    "mpris",
+    "custom/notification",
+    "network",
+    "memory",
+    "pulseaudio",
+    "backlight",
+    "battery"
+  ],
+
+"memory": {
+    "interval": 5,
+    "format": "RAM {}%"
+},
+"hyprland/workspaces": {
+    "format": "{id} {icon}",
+    "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "urgent": "",
+        "active": "",
+        "default": ""
+    },
+    "sort-by-number": true,
+    "on-click": "activate"
+},
+
+    "network": {
+        "format-wifi": " {signalStrength}%",
+        "format-disconnected": "󰖪"
+    },
+
+    "pulseaudio": {
+        "format": " {volume}%"
+    },
+
+   "backlight": {
+  "format": "{icon} {percent}%",
+  "format-icons": ["󰃞", "󰃟", "󰃠"]
+},
+
+    "battery": {
+        "format": " {capacity}%"
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip-format": "{:%A %d %B %Y}"
+    },
+
+    "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+        "notification": "󰂚",
+        "none": "󰂜",
+        "dnd-notification": "󰂛",
+        "dnd-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "escape": true
+},
+    "mpris": {
+    "format": "{player_icon} {title} - {artist}",
+    "format-paused": "<span size='x-large'>󰓇</span>",
+    "player-icons": {
+        "spotify": "󰓇",
+        "default": "󰓇"
+    },
+    "status-icons": {
+        "paused": ""
+    }
+}
+}
