@@ -6,7 +6,7 @@
 }
 
 window#waybar {
-  background: rgba(25, 25, 25, 1);
+  background: rgba(17, 17, 27, 0.45);
 }
 
 #network,
@@ -14,7 +14,8 @@ window#waybar {
 #backlight,
 #battery,
 #clock,
-#memory {
+#memory,
+#temperature {
   padding: 1px 10px;
   margin: 1px 3px;
 }
@@ -23,12 +24,47 @@ window#waybar {
   font-weight: bold;
   font-size: 18px;
   padding: 1px 10px;
+  color: #b4befe;
+}
+
+#mpris {
+  color: #f5c2e7;
+}
+
+#custom-notification {
+  color: #f9e2af;
+}
+
+#network {
+  color: #89dceb;
+}
+
+#temperature {
+  color: #89b4fa;
+}
+
+#memory {
+  color: #cba6f7;
+}
+
+#pulseaudio {
+  color: #94e2d5;
+}
+
+#backlight {
+  color: #fab387;
+}
+
+#battery {
+  color: #a6e3a1;
 }
 
 #workspaces button {
   padding: 0 8px;
   font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
+  color: #6c7086;
+  opacity: 0.6;
 }
 #workspaces label {
   font-weight: bold;
@@ -36,8 +72,8 @@ window#waybar {
 }
 
 #workspaces button.active {
-  background: #444;
-  border-radius: 4px;
+  color: #ffffff;
+  opacity: 1;
 }
 
 #custom-notification {
@@ -54,6 +90,5 @@ window#waybar {
 }
 
 #workspaces button.active:hover {
-  background: #444;
-  border-radius: 4px;
+  box-shadow: none;
 }

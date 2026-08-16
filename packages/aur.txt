@@ -6,6 +6,7 @@ gitkraken
 grimblast-git
 hyprlang2lua
 neofetch-git
+rofi-wayland
 spotify
 windscribe-v2-bin
 wlogout

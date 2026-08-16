@@ -44,7 +44,7 @@ hl.monitor({
 -- Set programs that you use
 local terminal = "kitty"
 local fileManager = "dolphin"
-local menu = "wofi"
+local menu = "rofi"
 
 --################
 --## AUTOSTART ###
@@ -224,7 +224,7 @@ hl.bind("XF86PowerOff", hl.dsp.exec_cmd("pgrep wlogout && pkill wlogout || wlogo
 hl.bind("PRINT", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | satty --filename - --copy-command wl-copy"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("~/scripts/toggle-waybar.sh"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("pkill wofi || wofi --show drun"))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("pkill rofi || rofi -show drun"))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + U", hl.dsp.exec_cmd("thunar"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
@@ -334,7 +334,7 @@ hl.config({
         rounding_power = 2,
         -- Change transparency of focused and unfocused windows
         active_opacity = 1.0,
-        inactive_opacity = 0.9,
+        inactive_opacity = 0.7,
         shadow = {
             enabled = true,
             range = 3,

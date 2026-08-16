@@ -13,25 +13,37 @@
     "mpris",
     "custom/notification",
     "network",
+    "temperature",
     "memory",
     "pulseaudio",
     "backlight",
     "battery"
   ],
 
+"temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+    "critical-threshold": 90,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["<span font_family=\"Font Awesome 7 Free Solid\"></span>", "<span font_family=\"Font Awesome 7 Free Solid\"></span>", "<span font_family=\"Font Awesome 7 Free Solid\"></span>"]
+},
 "memory": {
     "interval": 5,
-    "format": "RAM {}%"
+    "format": "<span size='large'>󰍛</span> {}%"
 },
 "hyprland/workspaces": {
-    "format": "{id} {icon}",
+    "format": "{icon}",
     "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "",
-        "urgent": "",
-        "active": "",
-        "default": ""
+        "1": "I",
+        "2": "II",
+        "3": "III",
+        "4": "IV",
+        "5": "V",
+        "6": "VI",
+        "7": "VII",
+        "8": "VIII",
+        "9": "IX",
+        "10": "X",
+        "urgent": "!"
     },
     "sort-by-number": true,
     "on-click": "activate"
@@ -43,16 +55,26 @@
     },
 
     "pulseaudio": {
-        "format": " {volume}%"
+        "format": "{icon} {volume}%",
+        "format-muted": "<span font_family=\"Font Awesome 7 Free Solid\"></span>",
+        "format-icons": {
+            "default": ["<span font_family=\"Font Awesome 7 Free Solid\"></span>", "<span font_family=\"Font Awesome 7 Free Solid\"></span>"]
+        }
     },
 
    "backlight": {
   "format": "{icon} {percent}%",
-  "format-icons": ["󰃞", "󰃟", "󰃠"]
+  "format-icons": ["󰪟", "󰪢", "󰪥"]
 },
 
     "battery": {
-        "format": " {capacity}%"
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "states": {
+            "warning": 30,
+            "critical": 15
+        }
     },
 
     "clock": {

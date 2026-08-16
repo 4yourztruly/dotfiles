@@ -1,0 +1,96 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    icon-theme: "Papirus";
+    drun-display-format: "{name}";
+    font: "JetBrainsMono Nerd Font 12";
+    cycle: false;
+}
+
+* {
+    bg: #11111b73;
+    bg-alt: #313244ff;
+    fg: #cdd6f4ff;
+    accent: #cba6f7ff;
+    selected: #b4befeff;
+    selected-fg: #11111bff;
+
+    normal-background: transparent;
+    normal-foreground: #6c7086ff;
+    alternate-normal-background: transparent;
+    alternate-normal-foreground: #6c7086ff;
+    selected-normal-background: @accent;
+    selected-normal-foreground: #ffffffff;
+}
+
+window {
+    width: 300px;
+    height: 480px;
+    location: center;
+    background-color: @bg;
+    border: 2px;
+    border-color: @accent;
+    border-radius: 12px;
+    padding: 8px;
+}
+
+mainbox {
+    background-color: transparent;
+    border: 0px;
+    children: [ "inputbar", "listview" ];
+    spacing: 10px;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    text-color: @fg;
+    padding: 10px;
+    border: 0px;
+    border-radius: 8px;
+    children: [ "entry" ];
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg;
+    placeholder: "";
+}
+
+listview {
+    background-color: transparent;
+    border: 0px;
+    columns: 1;
+    lines: 7;
+    spacing: 2px;
+    fixed-height: false;
+    scrollbar: false;
+}
+
+element {
+    background-color: transparent;
+    text-color: #6c7086ff;
+    padding: 8px;
+    border-radius: 6px;
+    orientation: horizontal;
+}
+
+element-icon {
+    size: 48px;
+    vertical-align: 0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+    padding: 0px 0px 0px 8px;
+    text-color: #6c7086ff;
+}
+
+element selected {
+    background-color: @accent;
+    text-color: #ffffffff;
+    border-radius: 6px;
+}
+
+element-text selected {
+    text-color: #ffffffff;
+}
