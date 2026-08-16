@@ -1,3 +1,5 @@
+set -g fish_greeting
+
 if status is-interactive
     if not set -q SSH_AUTH_SOCK
         ssh-agent -c | source >/dev/null

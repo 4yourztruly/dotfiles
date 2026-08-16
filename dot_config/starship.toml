@@ -1,16 +1,79 @@
-# Git branch
+format = """
+$os$username\
+[](fg:mauve bg:blue)\
+$directory\
+${custom.not_git}\
+([](fg:blue bg:green)$git_branch$git_status[](fg:green))\
+$line_break\
+$character"""
+
+palette = "catppuccin_mocha"
+
+[os]
+disabled = false
+style = "bg:mauve fg:crust"
+format = "[ $symbol ]($style)"
+
+[os.symbols]
+Arch = "\U000f08c7"
+
+[username]
+show_always = true
+style_user = "bg:mauve fg:crust"
+style_root = "bg:mauve fg:red"
+format = "[$user ]($style)"
+
+[directory]
+style = "bg:blue fg:crust"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[custom.not_git]
+command = ""
+when = "! git rev-parse --is-inside-work-tree > /dev/null 2>&1"
+format = "[](fg:blue)"
+
 [git_branch]
-symbol = " "
-style = "bold #f5c2e7"
+symbol = ""
+style = "bg:green fg:crust"
+format = "[ $symbol $branch ]($style)"
 
-# Git status (added, modified, removed)
 [git_status]
-style = "bold #f38ba8"
+style = "bg:green fg:peach"
+format = "[$all_status$ahead_behind ]($style)"
 
-# Git state (merging, rebasing)
 [git_state]
 style = "bold #fab387"
 
-# Character (prompt symbol) – new version uses 'success' module
-[status] 
-format = "[$symbol]($style) " # optional, can remove if unnecessary
+[character]
+success_symbol = "[❯](bold #a6e3a1)"
+error_symbol = "[❯](bold #f38ba8)"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
