@@ -312,6 +312,24 @@ hl.window_rule({
     float = true,
 })
 
+-- Frosted-glass blur for layer-shell surfaces (waybar, rofi). Regular
+-- windows (kitty etc.) get blur automatically from decoration.blur below
+-- as long as they have some transparency; layer-shell surfaces need an
+-- explicit layer_rule since they aren't covered by windowrule/decoration.
+hl.layer_rule({
+    name = "blur-waybar",
+    match = { namespace = "^waybar$" },
+    blur = true,
+    ignore_alpha = 0.2,
+})
+
+hl.layer_rule({
+    name = "blur-rofi",
+    match = { namespace = "^rofi$" },
+    blur = true,
+    ignore_alpha = 0.2,
+})
+
 hl.config({
     general = {
         gaps_in = 2,
@@ -319,8 +337,8 @@ hl.config({
         border_size = 0,
         -- https://wiki.hypr.land/Configuring/Variables/#variable-types for info about colors
         col = {
-            active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-            inactive_border = "rgba(595959aa)",
+            active_border = { colors = { "rgba(cba6f7ee)", "rgba(f5c2e7ee)" }, angle = 45 },
+            inactive_border = "rgba(585b70aa)",
         },
         -- Set to true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = false,
@@ -334,7 +352,7 @@ hl.config({
         rounding_power = 2,
         -- Change transparency of focused and unfocused windows
         active_opacity = 1.0,
-        inactive_opacity = 0.7,
+        inactive_opacity = 0.9,
         shadow = {
             enabled = true,
             range = 3,
@@ -344,9 +362,9 @@ hl.config({
         -- https://wiki.hypr.land/Configuring/Variables/#blur
         blur = {
             enabled = true,
-            size = 3,
-            passes = 1,
-            vibrancy = 0.1696,
+            size = 8,
+            passes = 3,
+            vibrancy = 0.2,
         },
     },
     -- https://wiki.hypr.land/Configuring/Variables/#animations

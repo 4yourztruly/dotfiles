@@ -13,18 +13,18 @@
     "mpris",
     "custom/notification",
     "network",
-    "temperature",
+    "custom/cputemp",
     "memory",
     "pulseaudio",
     "backlight",
     "battery"
   ],
 
-"temperature": {
-    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
-    "critical-threshold": 90,
-    "format": "{icon} {temperatureC}°C",
-    "format-icons": ["<span font_family=\"Font Awesome 7 Free Solid\"></span>", "<span font_family=\"Font Awesome 7 Free Solid\"></span>", "<span font_family=\"Font Awesome 7 Free Solid\"></span>"]
+"custom/cputemp": {
+    "exec": "~/.config/waybar/scripts/cputemp.sh",
+    "return-type": "json",
+    "interval": 5,
+    "format": "{}"
 },
 "memory": {
     "interval": 5,
